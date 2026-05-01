@@ -33,4 +33,13 @@ public class GymController {
         return ResponseEntity.status(HttpStatus.OK).body(new GymListRecord(allGyms));
     }
 
+    // get all memberships for particular gym
+    @GetMapping("/gyms/{gymId}/memberships")
+    public ResponseEntity getAllMembershipPlansForGivenGym(@PathVariable Long gymId) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(
+                gymService.getAllMembershipPlansFromGym(gymId)
+        );
+    }
+
 }

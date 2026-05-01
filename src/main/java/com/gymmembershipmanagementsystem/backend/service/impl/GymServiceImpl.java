@@ -1,9 +1,15 @@
 package com.gymmembershipmanagementsystem.backend.service.impl;
 
 import com.gymmembershipmanagementsystem.backend.dto.GymRecord;
+import com.gymmembershipmanagementsystem.backend.dto.MembershipRecord;
+import com.gymmembershipmanagementsystem.backend.dto.MembershipResponseListRecord;
+import com.gymmembershipmanagementsystem.backend.dto.MembershipResponseRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
+import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.repository.GymRepository;
+import com.gymmembershipmanagementsystem.backend.repository.MembershipRepository;
 import com.gymmembershipmanagementsystem.backend.service.GymService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,13 +18,11 @@ import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class GymServiceImpl implements GymService {
 
     private final GymRepository gymRepository;
-
-    GymServiceImpl(GymRepository gymRepository) {
-        this.gymRepository = gymRepository;
-    }
+    private final MembershipRepository membershipRepository;
 
     // creates new gym
     @Override
@@ -46,5 +50,33 @@ public class GymServiceImpl implements GymService {
     @Override
     public List<Gym> getGyms() {
         return gymRepository.findAll();
+    }
+
+    @Override
+    public MembershipResponseListRecord getAllMembershipPlansFromGym(Long gymId) {
+        // check if gym id exists in db
+        if (!gymRepository.existsById(gymId)) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Gym with id: " + gymId + " doesn't exist"
+            );
+        }
+
+        List<Membership> memberships = membershipRepository.findMembershipsByGym_Id(gymId);
+
+        List<MembershipResponseRecord> membershipRecords = memberships.stream()
+                .map(membership -> new MembershipResponseRecord(
+                        membership.getId(),
+                        membership.getGym().getId(),
+                        membership.getName(),
+                        membership.getMembershipPlanType(),
+                        membership.getMonthlyPrice(),
+                        membership.getCurrencyCode(),
+                        membership.getDurationMonths(),
+                        membership.getMaximumMembers()
+                ))
+                .toList();
+
+        return new MembershipResponseListRecord(membershipRecords);
     }
 }

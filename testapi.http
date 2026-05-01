@@ -36,3 +36,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/memberships
+
+###
+GET http://localhost:8080/gyms/1/memberships
