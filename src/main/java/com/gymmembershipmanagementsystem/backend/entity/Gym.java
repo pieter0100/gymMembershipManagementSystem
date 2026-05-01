@@ -1,13 +1,17 @@
 package com.gymmembershipmanagementsystem.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Builder
+@Getter
+@Setter
 public class Gym {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

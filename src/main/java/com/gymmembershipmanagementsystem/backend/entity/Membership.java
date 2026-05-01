@@ -2,7 +2,9 @@ package com.gymmembershipmanagementsystem.backend.entity;
 
 import com.gymmembershipmanagementsystem.backend.enums.MembershipPlanType;
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -10,6 +12,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,0 +1,13 @@
+### Add new gym
+
+POST http://localhost:8080/api/gyms
+Content-Type: application/json
+
+{
+  "name": "Super Fit",
+  "phoneNumber": "123456789",
+  "street": "Długa 5",
+  "city": "Gdańsk",
+  "country": "Polska",
+  "postalCode": "80-000"
+}
