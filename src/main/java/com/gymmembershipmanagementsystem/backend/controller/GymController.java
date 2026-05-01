@@ -1,7 +1,7 @@
 package com.gymmembershipmanagementsystem.backend.controller;
 
-import com.gymmembershipmanagementsystem.backend.dto.GymListRecord;
-import com.gymmembershipmanagementsystem.backend.dto.GymRecord;
+import com.gymmembershipmanagementsystem.backend.dto.gym.GymListRecord;
+import com.gymmembershipmanagementsystem.backend.dto.gym.GymRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
 import com.gymmembershipmanagementsystem.backend.service.GymService;
 import lombok.AllArgsConstructor;

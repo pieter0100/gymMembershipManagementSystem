@@ -1,11 +1,10 @@
-package com.gymmembershipmanagementsystem.backend.dto;
+package com.gymmembershipmanagementsystem.backend.dto.membership;
 
 import com.gymmembershipmanagementsystem.backend.enums.MembershipPlanType;
 
 import java.math.BigDecimal;
 
-public record MembershipResponseRecord(
-        Long id,
+public record MembershipRecord(
         Long gymId,
         String name,
         MembershipPlanType membershipPlanType,

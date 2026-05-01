@@ -1,4 +1,4 @@
-package com.gymmembershipmanagementsystem.backend.dto;
+package com.gymmembershipmanagementsystem.backend.dto.membership;
 
 import java.util.List;
 

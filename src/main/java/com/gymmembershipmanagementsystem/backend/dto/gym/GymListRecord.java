@@ -1,4 +1,4 @@
-package com.gymmembershipmanagementsystem.backend.dto;
+package com.gymmembershipmanagementsystem.backend.dto.gym;
 
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
 

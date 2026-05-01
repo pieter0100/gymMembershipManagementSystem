@@ -1,9 +1,8 @@
 package com.gymmembershipmanagementsystem.backend.controller;
 
-import com.gymmembershipmanagementsystem.backend.dto.MembershipResponseListRecord;
-import com.gymmembershipmanagementsystem.backend.dto.MembershipRecord;
-import com.gymmembershipmanagementsystem.backend.dto.MembershipResponseRecord;
-import com.gymmembershipmanagementsystem.backend.entity.Membership;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseListRecord;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipRecord;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseRecord;
 import com.gymmembershipmanagementsystem.backend.service.MembershipService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

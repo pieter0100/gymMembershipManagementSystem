@@ -1,9 +1,8 @@
 package com.gymmembershipmanagementsystem.backend.service.impl;
 
-import com.gymmembershipmanagementsystem.backend.dto.GymRecord;
-import com.gymmembershipmanagementsystem.backend.dto.MembershipRecord;
-import com.gymmembershipmanagementsystem.backend.dto.MembershipResponseListRecord;
-import com.gymmembershipmanagementsystem.backend.dto.MembershipResponseRecord;
+import com.gymmembershipmanagementsystem.backend.dto.gym.GymRecord;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseListRecord;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
 import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.repository.GymRepository;

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface MembershipRepository extends JpaRepository<Membership, Long> {
     List<Membership> findMembershipsByGym_Id(Long gymId);
+
+    boolean countMembershipsById(Long id);
 }

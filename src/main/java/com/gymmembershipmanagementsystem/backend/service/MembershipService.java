@@ -1,8 +1,7 @@
 package com.gymmembershipmanagementsystem.backend.service;
 
-import com.gymmembershipmanagementsystem.backend.dto.MembershipRecord;
-import com.gymmembershipmanagementsystem.backend.dto.MembershipResponseRecord;
-import com.gymmembershipmanagementsystem.backend.entity.Membership;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipRecord;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseRecord;
 
 import java.util.List;
 

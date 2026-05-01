@@ -1,4 +1,4 @@
-package com.gymmembershipmanagementsystem.backend.dto;
+package com.gymmembershipmanagementsystem.backend.dto.gym;
 
 public record GymRecord(
         String name,
