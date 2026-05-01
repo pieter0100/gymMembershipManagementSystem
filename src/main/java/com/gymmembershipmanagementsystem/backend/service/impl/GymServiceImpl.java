@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 
 @Service
 public class GymServiceImpl implements GymService {
@@ -28,7 +30,6 @@ public class GymServiceImpl implements GymService {
             );
         }
 
-
         return gymRepository.save(
                 Gym.builder()
                         .name(gymRecord.name())
@@ -39,5 +40,11 @@ public class GymServiceImpl implements GymService {
                         .postalCode(gymRecord.postalCode())
                         .build()
         );
+    }
+
+    // get all gyms
+    @Override
+    public List<Gym> getGyms() {
+        return gymRepository.findAll();
     }
 }

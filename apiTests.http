@@ -11,3 +11,7 @@ Content-Type: application/json
   "country": "Polska",
   "postalCode": "80-000"
 }
+
+###
+
+GET http://localhost:8080/api/gyms
