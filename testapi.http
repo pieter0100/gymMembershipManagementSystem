@@ -1,4 +1,38 @@
-### GET request to example server
+###
+POST http://localhost:8080/gyms
+Content-Type: application/json
+
+{
+  "name": "Super Fit Premium",
+  "phoneNumber": "123456789",
+  "street": "Długa 5",
+  "city": "Gdańsk",
+  "country": "Polska",
+  "postalCode": "80-000"
+}
+
+###
+
+###
 GET http://localhost:8080/gyms
 
 ###
+
+###
+POST http://localhost:8080/memberships
+Content-Type: application/json
+
+{
+  "gymId": 1,
+  "name": "Karnet OPEN Roczny",
+  "membershipPlanType": "BASIC",
+  "monthlyPrice": 150.00,
+  "currencyCode": "PLN",
+  "durationMonths": 12,
+  "maximumMembers": 500
+}
+
+###
+
+###
+GET http://localhost:8080/memberships

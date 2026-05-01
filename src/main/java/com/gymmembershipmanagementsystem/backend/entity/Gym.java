@@ -35,6 +35,6 @@ public class Gym {
     @Column(nullable = false, length = 20)
     private String postalCode;
 
-    @OneToMany(mappedBy = "gym")
+    @OneToMany(mappedBy = "gym", fetch = FetchType.LAZY)
     private List<Membership> memberships = new ArrayList<>();
 }
