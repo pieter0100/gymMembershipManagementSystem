@@ -1,8 +1,7 @@
 package com.gymmembershipmanagementsystem.backend.service.impl;
 
-import com.gymmembershipmanagementsystem.backend.dto.member.MemberListResponseRecord;
-import com.gymmembershipmanagementsystem.backend.dto.member.MemberRecord;
-import com.gymmembershipmanagementsystem.backend.dto.member.MemberResponseRecord;
+import com.gymmembershipmanagementsystem.backend.dto.member.*;
+import com.gymmembershipmanagementsystem.backend.entity.Gym;
 import com.gymmembershipmanagementsystem.backend.entity.Member;
 import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.enums.Status;
@@ -67,18 +66,27 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberListResponseRecord getAllMembers() {
-        return new MemberListResponseRecord(
+    public MemberResponseDetailedListRecord getAllMembers() {
+        return new MemberResponseDetailedListRecord(
                 memberRepository.findAll().stream()
-                        .map(member -> new MemberResponseRecord(
-                                member.getId(),
-                                member.getMembership().getId(),
-                                member.getFirstName(),
-                                member.getLastName(),
-                                member.getEmail(),
-                                member.getMembershipStartDate(),
-                                member.getStatus()
-                        ))
+                        .map(member -> {
+
+                            Membership membership = member.getMembership();
+                            Gym gym = membership.getGym();
+
+                            return new MemberResponseDetailedRecord(
+                                    member.getId(),
+                                    membership.getId(),
+                                    membership.getName(),
+                                    gym.getName(),
+                                    member.getFirstName(),
+                                    member.getLastName(),
+                                    member.getEmail(),
+                                    member.getMembershipStartDate(),
+                                    member.getStatus()
+                            );
+
+                        })
                         .toList()
         );
     }

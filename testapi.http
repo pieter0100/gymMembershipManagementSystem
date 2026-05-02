@@ -39,3 +39,20 @@ GET http://localhost:8080/memberships
 
 ###
 GET http://localhost:8080/gyms/1/memberships
+
+###
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "firstName": "Jan",
+  "lastName": "Kowalski",
+  "email": "jan.kowalski@example.com",
+  "membershipId": 1,
+  "status": "ACTIVE"
+}
+
+###
+
+###
+GET http://localhost:8080/members
