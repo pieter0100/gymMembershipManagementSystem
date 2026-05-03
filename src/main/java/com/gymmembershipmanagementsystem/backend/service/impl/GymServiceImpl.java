@@ -8,6 +8,7 @@ import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.repository.GymRepository;
 import com.gymmembershipmanagementsystem.backend.repository.MembershipRepository;
 import com.gymmembershipmanagementsystem.backend.service.GymService;
+import com.gymmembershipmanagementsystem.backend.utils.MembershipMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class GymServiceImpl implements GymService {
 
     private final GymRepository gymRepository;
     private final MembershipRepository membershipRepository;
+    private final MembershipMapper membershipMapper;
 
     // creates new gym
     @Override
@@ -64,16 +66,7 @@ public class GymServiceImpl implements GymService {
         List<Membership> memberships = membershipRepository.findMembershipsByGym_Id(gymId);
 
         List<MembershipResponseRecord> membershipRecords = memberships.stream()
-                .map(membership -> new MembershipResponseRecord(
-                        membership.getId(),
-                        membership.getGym().getId(),
-                        membership.getName(),
-                        membership.getMembershipPlanType(),
-                        membership.getMonthlyPrice(),
-                        membership.getCurrencyCode(),
-                        membership.getDurationMonths(),
-                        membership.getMaximumMembers()
-                ))
+                .map(membership -> membershipMapper.mapToMembershipResposne(membership))
                 .toList();
 
         return new MembershipResponseListRecord(membershipRecords);
