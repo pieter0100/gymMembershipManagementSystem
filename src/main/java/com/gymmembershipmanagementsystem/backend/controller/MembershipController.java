@@ -1,7 +1,7 @@
 package com.gymmembershipmanagementsystem.backend.controller;
 
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseListRecord;
-import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipRecord;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipRequestRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseRecord;
 import com.gymmembershipmanagementsystem.backend.service.MembershipService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class MembershipController {
     private final MembershipService membershipService;
 
     @PostMapping("/memberships")
-    public ResponseEntity addNewMembership(@RequestBody MembershipRecord membershipRecord) {
+    public ResponseEntity addNewMembership(@RequestBody MembershipRequestRecord membershipRecord) {
         MembershipResponseRecord savedMembership = membershipService.addMembership(membershipRecord);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMembership);

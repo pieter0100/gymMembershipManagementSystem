@@ -4,7 +4,7 @@ import com.gymmembershipmanagementsystem.backend.enums.MembershipPlanType;
 
 import java.math.BigDecimal;
 
-public record MembershipRecord(
+public record MembershipRequestRecord(
         Long gymId,
         String name,
         MembershipPlanType membershipPlanType,

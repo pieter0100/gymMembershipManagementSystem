@@ -1,7 +1,6 @@
 package com.gymmembershipmanagementsystem.backend.controller;
 
-import com.gymmembershipmanagementsystem.backend.dto.member.MemberListResponseRecord;
-import com.gymmembershipmanagementsystem.backend.dto.member.MemberRecord;
+import com.gymmembershipmanagementsystem.backend.dto.member.MemberRequestRecord;
 import com.gymmembershipmanagementsystem.backend.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/members")
-    public ResponseEntity addMember(@RequestBody MemberRecord memberRecord) {
+    public ResponseEntity addMember(@RequestBody MemberRequestRecord memberRecord) {
         return ResponseEntity.status(HttpStatus.CREATED).body(memberService.addNewMember(memberRecord));
     }
 

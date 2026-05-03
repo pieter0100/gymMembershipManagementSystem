@@ -1,6 +1,6 @@
 package com.gymmembershipmanagementsystem.backend.service.impl;
 
-import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipRecord;
+import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipRequestRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.repository.GymRepository;
@@ -23,7 +23,7 @@ public class MembershipServiceImpl implements MembershipService {
     private final MembershipMapper membershipMapper;
 
     @Override
-    public MembershipResponseRecord addMembership(MembershipRecord membershipRecord) {
+    public MembershipResponseRecord addMembership(MembershipRequestRecord membershipRecord) {
         // check if gym id exists
         if (!gymRepository.existsById(membershipRecord.gymId())) {
             throw new ResponseStatusException(

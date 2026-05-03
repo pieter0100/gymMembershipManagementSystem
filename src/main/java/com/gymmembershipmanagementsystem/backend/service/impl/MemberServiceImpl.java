@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
     private final MemberMapper memberMapper;
 
     @Override
-    public MemberResponseRecord addNewMember(MemberRecord memberRecord) {
+    public MemberResponseRecord addNewMember(MemberRequestRecord memberRecord) {
         // 1. check if member id exist
         Optional<Membership> membership = membershipRepository.findById(memberRecord.membershipId());
 
