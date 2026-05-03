@@ -6,7 +6,6 @@ public record MemberRequestRecord(
         Long membershipId,
         String firstName,
         String lastName,
-        String email,
-        LocalDateTime membershipStartDate
+        String email
 ) {
 }

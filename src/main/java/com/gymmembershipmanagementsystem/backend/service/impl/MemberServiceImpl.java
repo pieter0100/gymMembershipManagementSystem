@@ -55,6 +55,12 @@ public class MemberServiceImpl implements MemberService {
                             .build()
             );
         }
+        else {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Membership capacity with id: " + memberRecord.membershipId() + " is full"
+            );
+        }
 
         return memberMapper.mapToMemberResponse(member);
     }
