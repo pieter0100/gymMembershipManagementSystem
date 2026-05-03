@@ -12,4 +12,10 @@ public interface MemberService {
 
     // get all members
     MemberResponseDetailedListRecord getAllMembers();
+
+    // change status to cancel
+    MemberResponseRecord cancelMembership(Long id);
+
+    // change status tu active (reactivate)
+    MemberResponseRecord reactivateMembership(Long id);
 }

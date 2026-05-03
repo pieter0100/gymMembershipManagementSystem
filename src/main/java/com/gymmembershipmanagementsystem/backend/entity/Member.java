@@ -35,7 +35,8 @@ public class Member {
     @Column(nullable = false)
     private LocalDateTime membershipStartDate;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Status status;
+    private Status status = Status.ACTIVE;
 }

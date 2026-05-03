@@ -8,6 +8,7 @@ import com.gymmembershipmanagementsystem.backend.enums.Status;
 import com.gymmembershipmanagementsystem.backend.repository.MemberRepository;
 import com.gymmembershipmanagementsystem.backend.repository.MembershipRepository;
 import com.gymmembershipmanagementsystem.backend.service.MemberService;
+import com.gymmembershipmanagementsystem.backend.utils.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
     private final MembershipRepository membershipRepository;
+    private final MemberMapper memberMapper;
 
     @Override
     public MemberResponseRecord addNewMember(MemberRecord memberRecord) {
@@ -54,17 +56,10 @@ public class MemberServiceImpl implements MemberService {
             );
         }
 
-        return new MemberResponseRecord(
-                member.getId(),
-                member.getMembership().getId(),
-                member.getFirstName(),
-                member.getLastName(),
-                member.getEmail(),
-                member.getMembershipStartDate(),
-                member.getStatus()
-        );
+        return memberMapper.mapToMemberResponse(member);
     }
 
+    // todo create JOIN on all tables
     @Override
     public MemberResponseDetailedListRecord getAllMembers() {
         return new MemberResponseDetailedListRecord(
@@ -74,20 +69,25 @@ public class MemberServiceImpl implements MemberService {
                             Membership membership = member.getMembership();
                             Gym gym = membership.getGym();
 
-                            return new MemberResponseDetailedRecord(
-                                    member.getId(),
-                                    membership.getId(),
-                                    membership.getName(),
-                                    gym.getName(),
-                                    member.getFirstName(),
-                                    member.getLastName(),
-                                    member.getEmail(),
-                                    member.getMembershipStartDate(),
-                                    member.getStatus()
-                            );
-
+                            return memberMapper.mapToMemberDetailedResposne(member, gym);
                         })
                         .toList()
         );
+    }
+
+    @Override
+    public MemberResponseRecord cancelMembership(Long id) {
+        Member member = memberRepository.getReferenceById(id);
+        member.setStatus(Status.CANCELLED);
+
+        return memberMapper.mapToMemberResponse(member);
+    }
+
+    @Override
+    public MemberResponseRecord reactivateMembership(Long id) {
+        Member member = memberRepository.getReferenceById(id);
+        member.setStatus(Status.ACTIVE);
+
+        return memberMapper.mapToMemberResponse(member);
     }
 }

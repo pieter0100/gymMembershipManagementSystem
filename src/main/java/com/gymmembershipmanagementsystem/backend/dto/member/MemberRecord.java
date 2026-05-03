@@ -9,7 +9,6 @@ public record MemberRecord(
         String firstName,
         String lastName,
         String email,
-        LocalDateTime membershipStartDate,
-        Status status
+        LocalDateTime membershipStartDate
 ) {
 }

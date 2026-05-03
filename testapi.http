@@ -48,11 +48,16 @@ Content-Type: application/json
   "firstName": "Jan",
   "lastName": "Kowalski",
   "email": "jan.kowalski@example.com",
-  "membershipId": 1,
-  "status": "ACTIVE"
+  "membershipId": 1
 }
 
 ###
 
 ###
 GET http://localhost:8080/members
+
+###
+POST http://localhost:8080/members/1/cancel
+
+###
+POST http://localhost:8080/members/1/activate
