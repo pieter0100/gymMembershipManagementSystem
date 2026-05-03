@@ -59,11 +59,10 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.mapToMemberResponse(member);
     }
 
-    // todo create JOIN on all tables
     @Override
     public MemberResponseDetailedListRecord getAllMembers() {
         return new MemberResponseDetailedListRecord(
-                memberRepository.findAll().stream()
+                memberRepository.findAllWithDetails().stream()
                         .map(member -> {
 
                             Membership membership = member.getMembership();
