@@ -6,6 +6,7 @@ import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.repository.GymRepository;
 import com.gymmembershipmanagementsystem.backend.repository.MembershipRepository;
 import com.gymmembershipmanagementsystem.backend.service.MembershipService;
+import com.gymmembershipmanagementsystem.backend.utils.MembershipMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class MembershipServiceImpl implements MembershipService {
 
     private final MembershipRepository membershipRepository;
     private final GymRepository gymRepository;
+    private final MembershipMapper membershipMapper;
 
     @Override
     public MembershipResponseRecord addMembership(MembershipRecord membershipRecord) {
@@ -42,16 +44,7 @@ public class MembershipServiceImpl implements MembershipService {
                         .build()
         );
 
-        return new MembershipResponseRecord(
-                savedMembership.getId(),
-                savedMembership.getGym().getId(),
-                savedMembership.getName(),
-                savedMembership.getMembershipPlanType(),
-                savedMembership.getMonthlyPrice(),
-                savedMembership.getCurrencyCode(),
-                savedMembership.getDurationMonths(),
-                savedMembership.getMaximumMembers()
-        );
+        return membershipMapper.mapToMembershipResposne(savedMembership);
     }
 
     @Override
@@ -59,16 +52,7 @@ public class MembershipServiceImpl implements MembershipService {
         List<Membership> memberships = membershipRepository.findAll();
 
         return memberships.stream()
-                .map(membership -> new MembershipResponseRecord(
-                        membership.getId(),
-                        membership.getGym().getId(),
-                        membership.getName(),
-                        membership.getMembershipPlanType(),
-                        membership.getMonthlyPrice(),
-                        membership.getCurrencyCode(),
-                        membership.getDurationMonths(),
-                        membership.getMaximumMembers()
-                ))
+                .map(membership -> membershipMapper.mapToMembershipResposne(membership))
                 .toList();
     }
 
