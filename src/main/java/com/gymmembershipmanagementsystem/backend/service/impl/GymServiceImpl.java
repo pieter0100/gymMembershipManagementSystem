@@ -4,6 +4,7 @@ import com.gymmembershipmanagementsystem.backend.dto.gym.GymRequestRecord;
 import com.gymmembershipmanagementsystem.backend.dto.gym.GymResponseRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseListRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseRecord;
+import com.gymmembershipmanagementsystem.backend.dto.revenue.RevenueResponseRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
 import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.repository.GymRepository;
@@ -75,5 +76,10 @@ public class GymServiceImpl implements GymService {
                 .toList();
 
         return new MembershipResponseListRecord(membershipRecords);
+    }
+
+    @Override
+    public List<RevenueResponseRecord> getRevenue() {
+        return gymRepository.calculateRevenuePerGym();
     }
 }

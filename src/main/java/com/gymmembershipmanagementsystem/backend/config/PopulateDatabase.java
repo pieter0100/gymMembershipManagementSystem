@@ -64,7 +64,7 @@ public class PopulateDatabase {
                         randomName,
                         randomPlanType,
                         BigDecimal.valueOf(faker.number().randomDouble(2, 50, 350)),
-                        faker.currency().code(),
+                        faker.options().option("PLN", "USD", "EUR"),
                         faker.options().option(1, 3, 6, 12, 24),
                         faker.number().numberBetween(5, 50)
                 );

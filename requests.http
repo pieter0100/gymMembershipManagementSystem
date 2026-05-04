@@ -22,6 +22,11 @@ GET {{baseUrl}}/memberships
 GET {{baseUrl}}/gyms/1/memberships
 
 ###
+# group: getEndpoints
+# @name GetRevenue
+GET {{baseUrl}}/revenue
+
+###
 # group: postEndpoints
 # @name AddNewGym
 POST {{baseUrl}}/gyms

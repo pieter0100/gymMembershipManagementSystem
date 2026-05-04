@@ -3,6 +3,7 @@ package com.gymmembershipmanagementsystem.backend.service;
 import com.gymmembershipmanagementsystem.backend.dto.gym.GymRequestRecord;
 import com.gymmembershipmanagementsystem.backend.dto.gym.GymResponseRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseListRecord;
+import com.gymmembershipmanagementsystem.backend.dto.revenue.RevenueResponseRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface GymService {
 
     // get all memberships for given gym
     MembershipResponseListRecord getAllMembershipPlansFromGym(Long gymId);
+
+    List<RevenueResponseRecord> getRevenue();
 }
