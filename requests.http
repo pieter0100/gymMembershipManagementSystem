@@ -1,5 +1,4 @@
 # gymAPI
-@baseUrl = http://localhost:8080
 
 ###
 # group: getEndpoints
@@ -77,3 +76,13 @@ Content-Type: application/json
   "email": "jan.kowalski@test.com",
   "membershipId": 12
 }
+
+###
+# group: postEndpoints
+# @name CancelMembership
+POST {{baseUrl}}/members/1/cancel
+
+###
+# group: postEndpoints
+# @name ReactivateMembership
+POST {{baseUrl}}/members/1/activate
