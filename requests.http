@@ -1,0 +1,79 @@
+# gymAPI
+@baseUrl = http://localhost:8080
+
+###
+# group: getEndpoints
+# @name GetAllMembers
+GET {{baseUrl}}/members
+
+###
+# group: getEndpoints
+# @name GetAllGyms
+GET {{baseUrl}}/gyms
+
+###
+# group: getEndpoints
+# @name GetAllMemberships
+GET {{baseUrl}}/memberships
+
+###
+# group: getEndpoints
+# @name GetMembershipsFromGivenGym
+GET {{baseUrl}}/gyms/1/memberships
+
+###
+# group: postEndpoints
+# @name AddNewGym
+POST {{baseUrl}}/gyms
+Content-Type: application/json
+
+{
+  "name": "Super Gym Test 1",
+  "phoneNumber": "123456789",
+  "street": "Długa 5",
+  "city": "Gdańsk",
+  "country": "Polska",
+  "postalCode": "80-000"
+}
+
+###
+# group: postEndpoints
+# @name AddNewMembership
+POST {{baseUrl}}/memberships
+Content-Type: application/json
+
+{
+  "gymId": 1,
+  "name": "Karnet Test 1",
+  "membershipPlanType": "BASIC",
+  "monthlyPrice": 150.00,
+  "currencyCode": "PLN",
+  "durationMonths": 12,
+  "maximumMembers": 500
+}
+
+###
+# group: postEndpoints
+# @name AddNewMember
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "firstName": "Jan",
+  "lastName": "Test 1",
+  "email": "jan.kowalski@test.com",
+  "membershipId": 1
+}
+
+###
+# group: postEndpoints
+# @name AddMemberToFullMembershipPlan
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "firstName": "Jan",
+  "lastName": "Test 1",
+  "email": "jan.kowalski@test.com",
+  "membershipId": 12
+}

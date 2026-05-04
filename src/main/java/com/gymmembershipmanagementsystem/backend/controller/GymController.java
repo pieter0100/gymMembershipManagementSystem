@@ -1,7 +1,7 @@
 package com.gymmembershipmanagementsystem.backend.controller;
 
 import com.gymmembershipmanagementsystem.backend.dto.gym.GymListRecord;
-import com.gymmembershipmanagementsystem.backend.dto.gym.GymRecord;
+import com.gymmembershipmanagementsystem.backend.dto.gym.GymRequestRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
 import com.gymmembershipmanagementsystem.backend.service.GymService;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class GymController {
 
     // create new gym
     @PostMapping("/gyms")
-    public ResponseEntity addNewGym(@RequestBody GymRecord gymRecord) {
+    public ResponseEntity addNewGym(@RequestBody GymRequestRecord gymRecord) {
         Gym savedGym = gymService.addGym(gymRecord);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedGym);
@@ -28,9 +28,7 @@ public class GymController {
     // get all gyms
     @GetMapping("/gyms")
     public ResponseEntity getAllGyms() {
-        List<Gym> allGyms = gymService.getGyms();
-
-        return ResponseEntity.status(HttpStatus.OK).body(new GymListRecord(allGyms));
+        return ResponseEntity.status(HttpStatus.OK).body(new GymListRecord(gymService.getGyms()));
     }
 
     // get all memberships for particular gym

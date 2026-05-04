@@ -1,18 +1,11 @@
 package com.gymmembershipmanagementsystem.backend.config;
 
-import com.gymmembershipmanagementsystem.backend.dto.gym.GymRecord;
+import com.gymmembershipmanagementsystem.backend.dto.gym.GymRequestRecord;
 import com.gymmembershipmanagementsystem.backend.dto.member.MemberRequestRecord;
-import com.gymmembershipmanagementsystem.backend.dto.member.MemberResponseDetailedRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipRequestRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
-import com.gymmembershipmanagementsystem.backend.entity.Member;
-import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.enums.MembershipPlanType;
-import com.gymmembershipmanagementsystem.backend.enums.Status;
-import com.gymmembershipmanagementsystem.backend.repository.GymRepository;
-import com.gymmembershipmanagementsystem.backend.repository.MemberRepository;
-import com.gymmembershipmanagementsystem.backend.repository.MembershipRepository;
 import com.gymmembershipmanagementsystem.backend.service.GymService;
 import com.gymmembershipmanagementsystem.backend.service.MemberService;
 import com.gymmembershipmanagementsystem.backend.service.MembershipService;
@@ -48,7 +41,7 @@ public class PopulateDatabase {
             // create gyms
             for (int i = 0; i < 5; i++) {
                 gyms.add(i, gymService.addGym(
-                        new GymRecord(
+                        new GymRequestRecord(
                                 "Super Fit " + faker.address().cityName(),
                                 faker.address().city(),
                                 faker.address().streetAddress(),

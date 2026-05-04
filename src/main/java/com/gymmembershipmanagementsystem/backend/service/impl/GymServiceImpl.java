@@ -1,6 +1,7 @@
 package com.gymmembershipmanagementsystem.backend.service.impl;
 
-import com.gymmembershipmanagementsystem.backend.dto.gym.GymRecord;
+import com.gymmembershipmanagementsystem.backend.dto.gym.GymRequestRecord;
+import com.gymmembershipmanagementsystem.backend.dto.gym.GymResponseRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseListRecord;
 import com.gymmembershipmanagementsystem.backend.dto.membership.MembershipResponseRecord;
 import com.gymmembershipmanagementsystem.backend.entity.Gym;
@@ -8,6 +9,7 @@ import com.gymmembershipmanagementsystem.backend.entity.Membership;
 import com.gymmembershipmanagementsystem.backend.repository.GymRepository;
 import com.gymmembershipmanagementsystem.backend.repository.MembershipRepository;
 import com.gymmembershipmanagementsystem.backend.service.GymService;
+import com.gymmembershipmanagementsystem.backend.utils.GymMapper;
 import com.gymmembershipmanagementsystem.backend.utils.MembershipMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,10 +26,11 @@ public class GymServiceImpl implements GymService {
     private final GymRepository gymRepository;
     private final MembershipRepository membershipRepository;
     private final MembershipMapper membershipMapper;
+    private final GymMapper gymMapper;
 
     // creates new gym
     @Override
-    public Gym addGym(GymRecord gymRecord) {
+    public Gym addGym(GymRequestRecord gymRecord) {
         if (gymRepository.existsGymByName(gymRecord.name())) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
@@ -49,8 +52,10 @@ public class GymServiceImpl implements GymService {
 
     // get all gyms
     @Override
-    public List<Gym> getGyms() {
-        return gymRepository.findAll();
+    public List<GymResponseRecord> getGyms() {
+        return gymRepository.findAll().stream()
+                .map(gym -> gymMapper.mapToGymResponseRecord(gym))
+                .toList();
     }
 
     @Override
