@@ -19,3 +19,9 @@ Otwórz terminal w głównym folderze projektu i wpisz:
 ## Testowanie API endpoints
 
 ### 1. Skorzystaj z pliku `requests.http`
+
+## Dostęp do GUI bazy danych
+### Adres: `http://localhost:8080/h2-console`
+### username: root, password: (brak)
+
+## Schemat bazy danych w pliku: `dbSchema.png`

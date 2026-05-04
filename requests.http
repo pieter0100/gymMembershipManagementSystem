@@ -1,4 +1,5 @@
 # gymAPI
+@baseUrl = http://localhost:8080/
 
 ###
 # group: getEndpoints
